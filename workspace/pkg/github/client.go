@@ -54,6 +54,10 @@ func (c *Client) GetIssues(owner, repo string, limit int) ([]Issue, error) {
 			return nil, err
 		}
 
+		if len(issues) == 0 {
+			break
+		}
+
 		allIssues = append(allIssues, issues...)
 
 		if len(allIssues) >= limit {
